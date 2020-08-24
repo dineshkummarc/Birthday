@@ -1,15 +1,12 @@
 <?php  include('server.php'); 
-
-
 	if (isset($_GET['edit'])) {
 		$id = $_GET['edit'];
                 $edit_state = true;
-		$rec = mysqli_query($db, "SELECT * FROM info WHERE id=$id");
+		$rec = mysqli_query($db, "SELECT * FROM birthday WHERE id=$id");
                 $record = mysqli_fetch_array($rec); 
 		$name = $record['name'];
                 $date = $record['date'];
                 $id = $record['id'];
-		
 	}
 ?>
 
@@ -59,19 +56,20 @@
                         <option>December</option>
                     </select>
                 </div>
+		 
+<!-- 		tìm kiếm theo tên -->
                 <div class="col-md-3">Or Name: <input type="text" id="myInput" value="" size="11" style="border: solid orange" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" >
                 </div>
+		    
                 <div class="col-md-3">
                     <button type="button" class="btn btn-warning">Search</button>
-                    
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Add </button>
-                    
-                </div>
+               	</div>
             </div>    
         </div> 
         <br>
         
-        <?php $results = mysqli_query($db, "SELECT * FROM info"); ?>
+        <?php $results = mysqli_query($db, "SELECT * FROM birthday"); ?>
         <div class="container">
             <table class="table table-striped table-bordered" id="myTable">
                 <thead>
@@ -98,25 +96,7 @@
             </table>
         </div>
         
-<!--	<form method="post" action="server.php" >
-            <input type="hidden" name="id" value="<?php echo $id; ?>">    
-		<div class="input-group">
-                    <label>Name</label>
-                    <input type="text" name="name" value="<?php echo $name; ?>">
-		</div>
-		<div class="input-group">
-                    <label>Date</label>
-                    <input type="text" name="date" value="<?php echo $date; ?>">
-		</div>
-		<div class="input-group">
-                    <?php if ($update == true): ?>
-                      <button class="btn" type="submit" name="update" style="background: #556B2F;">update</button>
-                    <?php else: ?>
-                      <button class="btn" type="submit" name="save" >Save</button>
-                    <?php endif ?>
-                </div>
-	</form>
-        -->
+
 <!--        //popup -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -128,39 +108,25 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form method="post" action="server.php" >
+                  <form method="post" action="server.php" >
                        <input type="hidden" name="id" value="<?php echo $id; ?>">    
                        <div class="input-group">
-                            <input type="submit" value="" /> <label>Name</label>
+                            <label>Name</label>
                             <input type="text" name="name" value="<?php echo $name; ?>">
-                       </div>
-		<div class="input-group">
-                    <label>Date</label>
-                    <input type="text" name="date" value="<?php echo $date; ?>">
-		</div>
-		<div class="input-group">
-                    <?php if ($update == true): ?>
-                      <button class="btn" type="submit" name="update" style="background: #556B2F;">update</button>
-                    <?php else: ?>
-                      <button class="btn" type="submit" name="save" >Save</button>
-                    <?php endif ?>
-                </div>
+                       	</div>
+			<div class="input-group">
+			    <label>Date</label>
+			    <input type="text" name="date" value="<?php echo $date; ?>">
+			</div>
+			<div class="input-group">
+			    <?php if ($update == true): ?>
+			      <button class="btn" type="submit" name="update" style="background: #556B2F;">update</button>
+			    <?php else: ?>
+			      <button class="btn" type="submit" name="save" >Save</button>
+			    <?php endif ?>
+			</div>
                    </form>
-<!--                   <input type="hidden" name="id" value="<?php echo $id; ?>">    
-                    <div class="input-group">
-                        <label>Name</label>
-                        <input type="text" name="name" value="<?php echo $name; ?>">
-                    </div>
-                    <div class="input-group">
-                        <label>Date</label>
-                        <input type="text" name="date" value="<?php echo $date; ?>">
-                    </div> -->
-         
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
+		</div>
             </div>
           </div>
         </div>
