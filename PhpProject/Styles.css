@@ -17,18 +17,20 @@ th, td{
 }
 
 form {
-    width: 45%;
+    width: 100%;
     margin: 50px auto;
     text-align: left;
     padding: 20px; 
-    border: 1px solid #bbbbbb; 
-    border-radius: 5px;
+    
 }
 h5{
     color: white;
 }
 .modal-header{
     background: #BC8F8F;
+}
+.modal-dialog{
+    
 }
 
 .input-group {
@@ -46,13 +48,5 @@ h5{
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid gray;
-}
-.btn {
-    padding: 10px;
-    font-size: 15px;
-    color: white;
-    background: #5F9EA0;
-    border: none;
-    border-radius: 5px;
 }
 
